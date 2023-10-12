@@ -21,12 +21,12 @@ def data_collator(features: list) -> dict:
 
 def tokenise_data(dataset, tokenizer, max_seq_length=512):
     tokenised_list = []
-    for elem in tqdm.tqdm(dataset["train"]):
+    for elem in tqdm.tqdm(dataset):
         tokenised_list.append(
             tokenizer.encode(
                 elem["text"],
                 max_length=max_seq_length,
-                padding="max_length",
+                padding=True,
                 truncation=True,
             )
         )
